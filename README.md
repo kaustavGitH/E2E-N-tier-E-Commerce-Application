@@ -1,0 +1,1 @@
+Deploying a production-ready microservices e-commerce platform on Amazon EKS (Elastic Kubernetes Service) 
