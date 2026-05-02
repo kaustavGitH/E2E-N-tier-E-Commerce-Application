@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     parameters{
-        choice(name: 'TERRAFORM ACTION', choices:['apply','destroy'], description: 'Select a Terraform action to create or delete resources')
+        choice(name: 'TERRAFORM_ACTION', choices:['apply','destroy'], description: 'Select a Terraform action to create or delete resources')
     }
 
     stages{
@@ -44,7 +44,7 @@ pipeline{
 
         stage('Terraform apply'){
             when{
-                expression{params.TERRAFORM ACTION == 'apply'}
+                expression{params.TERRAFORM_ACTION == 'apply'}
             }
             steps{
                 dir('eks-terraform'){
@@ -56,7 +56,7 @@ pipeline{
 
         stage('Terraform destroy'){
             when{
-                expression{params.TERRAFORM ACTION == 'destroy'}
+                expression{params.TERRAFORM_ACTION == 'destroy'}
             }
             steps{
                 dir('eks-terraform'){
