@@ -114,10 +114,10 @@ data "aws_vpc" "main" {
   }
 }
 
-data "aws_subnets" "all_subnets" {
+data "aws_subnets" "main_subnet" {
   filter {
-    name = "vpc-id"
-    values = [ data.aws_vpc.main.id ]
+    name = "tag:Name"
+    values = ["Subnet-A","Subnet-B","Subnet-C","Subnet-D"]
   }
 }
 
