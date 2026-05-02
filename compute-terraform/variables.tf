@@ -31,7 +31,7 @@ variable "vpc_name" {
 variable "public_subnet_cidr" {
   description = "CIDR blocks for vpc subnet"
   type = list(string)
-  default = [ "10.0.1.0/16","10.0.2.0/16","10.0.3.0/16","10.0.4.0/16" ]
+  default = [ "10.0.1.0/24","10.0.2.0/24","10.0.3.0/24","10.0.4.0/24" ]
 }
 
 variable "subnet_name" {
@@ -58,8 +58,8 @@ variable "iam_role_name" {
   default = "Master-server-iam-role1"
 }
 
-variable "iam_user" {
-  description = "IAM profile for instance"
+variable "sg_name" {
+  description = "Name of the security group"
   type = string
-  default = "kbis-profile"
+  default = "Master-sg"
 }

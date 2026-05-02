@@ -1,7 +1,7 @@
 resource "aws_iam_policy" "eks_policy" {
   name        = "eks_policy"
   description = "Custom policy for EKS full access"
-  policy = jsondecode(
+  policy = jsonencode(
     {
       "Version" : "2012-10-17",
       "Statement" : [
