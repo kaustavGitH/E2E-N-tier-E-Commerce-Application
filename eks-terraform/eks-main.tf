@@ -124,7 +124,7 @@ data "aws_subnets" "all_subnets" {
 data "aws_security_group" "main_sg" {
   vpc_id = data.aws_vpc.main.id
   filter {
-    name = "tags:Name"
+    name = "tag:Name"
     values = [ "Master-sg" ]
   }
 }
