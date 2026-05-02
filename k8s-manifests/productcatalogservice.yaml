@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalogservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: productcatalogservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: productcatalogservice
+    spec:
+      containers:
+      - name: productcatalogservice-container
+        image: productcatalogservice:v1
+      ports:
+      - containerPort: 3550
+      env:
+      - name: PORT
+        value: "3550"
+      - name: DISABLE_PROFILER
+        value: "1"
+      resources:
+        requests:
+          cpu: 200m
+          memory: 64mi
+        limits:
+          cpu: 300m
+          memory: 150Mi
+      readinessProbe:
+        grpc:
+          port: 3550
+        initialDelaySeconds: 15
+        periodSeconds: 10
+      livenessProbe:
+        grpc:
+          port: 3550
+        initialDelaySeconds: 15
+        periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: productcatalogservice
+  ports:
+  - port: 3550
+    targetPort: 3550
+    name: grpc

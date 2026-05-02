@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cartservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cartservice
+    spec:
+      containers:
+      - name: cartservice-container
+        image: cartservice:v1
+      ports:
+      - containerPort: 7070
+      env:
+      - name: REDIS_ADDR
+        value: "redis-cart:6379"
+      resources:
+        requests:
+          cpu: 200m
+          memory: 64mi
+        limits:
+          cpu: 300m
+          memory: 150Mi
+      readinessProbe:
+        grpc:
+          port: 7070
+        initialDelaySeconds: 15
+        periodSeconds: 10
+      livenessProbe:
+        grpc:
+          port: 7070
+        initialDelaySeconds: 15
+        periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: cartservice
+  ports:
+  - port: 7070
+    targetPort: 7070
+    name: grpc
