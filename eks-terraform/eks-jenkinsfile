@@ -7,6 +7,14 @@ pipeline{
     }
 
     stages{
+        stage('Validate parameters'){
+            steps{
+                if(params.TERRAFORM_ACTION == ''){
+                    error("Terraform action has to be provided")
+                }
+            }
+        }
+
         stage('Git checkout'){
             steps{
                 script{
