@@ -1,0 +1,69 @@
+@Library('Shared')_
+pipeline{
+    agent any
+
+    parameters{
+        choice(name: 'TERRAFORM ACTION', choices:['apply','destroy'], description: 'Select a Terraform action to create or delete resources')
+    }
+
+    stages{
+        stage('Git checkout'){
+            steps{
+                script{
+                    code_checkout('https://github.com/kaustavGitH/E2E-N-tier-E-Commerce-Application.git','main')
+                }
+            }
+        }
+
+        stage('Terraform init'){
+            steps{
+                dir('eks-terraform'){
+                    echo '================================Initializing terraform================================='
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform validate'){
+            steps{
+                dir('eks-terraform'){
+                    echo '================================Validate terraform configuration================================='
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+        stage('Terraform plan'){
+            steps{
+                dir('eks-terraform'){
+                    echo '================================Planning terraform================================='
+                    sh 'terraform plan'
+                }
+            }
+        }
+
+        stage('Terraform apply'){
+            when{
+                expression{params.TERRAFORM ACTION == 'apply'}
+            }
+            steps{
+                dir('eks-terraform'){
+                    echo '================================Terraform create resources================================='   
+                    sh 'terraform apply --auto-approve'    
+                }
+            }
+        }
+
+        stage('Terraform destroy'){
+            when{
+                expression{params.TERRAFORM ACTION == 'destroy'}
+            }
+            steps{
+                dir('eks-terraform'){
+                    echo '================================Terraform destroy resources================================='   
+                    sh 'terraform destroy --auto-approve'    
+                }
+            }
+        }
+    }
+}

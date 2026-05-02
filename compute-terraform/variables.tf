@@ -1,7 +1,7 @@
 variable "instance_ami" {
   description = "Ami id for the instance"
   type        = string
-  default     = "ami-091138d0f0d41ff90"
+  default     = "ami-05cf1e9f73fbad2e2"
 }
 
 variable "instance_type" {
@@ -31,7 +31,7 @@ variable "vpc_name" {
 variable "public_subnet_cidr" {
   description = "CIDR blocks for vpc subnet"
   type = list(string)
-  default = [ "10.0.1.0/24","10.0.2.0/24","10.0.3.0/24","10.0.4.0/24" ]
+  default = [ "172.168.1.0/24","172.168.2.0/24","172.168.3.0/24","172.168.4.0/24" ]
 }
 
 variable "subnet_name" {
