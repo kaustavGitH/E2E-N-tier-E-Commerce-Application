@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: adservice-container
-        image: adservice:v1
+        image: kaustavsdet/adservice:v1
       ports:
       - containerPort: 9555
       env:
