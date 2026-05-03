@@ -27,7 +27,7 @@ pipeline{
         stage('Docker: build image'){
             steps{
                 dir('src/adservice'){
-                    docker_build(imageName:${IMAGE_NAME}, imageTag:${IMAGE_TAG}, dockerHubUser:${DOCKER_USER})
+                    docker_build(imageName:"${IMAGE_NAME}", imageTag:"${IMAGE_TAG}", dockerHubUser:"${DOCKER_USER}")
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline{
         stage('Docker: push image'){
             steps{
                 dir('src/adservice'){
-                    docker_push(imageName:${IMAGE_NAME}, imageTag:${IMAGE_TAG})
+                    docker_push(imageName:"${IMAGE_NAME}", imageTag:"${IMAGE_TAG}")
                 }
             }
         }
