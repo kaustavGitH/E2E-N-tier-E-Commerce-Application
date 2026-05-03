@@ -2,7 +2,7 @@ resource "aws_security_group" "main_sg" {
   vpc_id = aws_vpc.main_vpc.id
 
   ingress = [
-    for port in [22, 80, 443, 5050, 7000, 7070, 8080, 9000, 9090, 9555, 3600, 3550, 50051] : {
+    for port in [22, 53, 80, 443, 5050, 7000, 7070, 8080, 9000, 9090, 9555, 3600, 3550, 50051, 10250] : {
       description = "Incoming traffic into VPC"
       from_port   = port
       to_port     = port
