@@ -129,6 +129,7 @@ resource "aws_eks_node_group" "ecommerce_eks_ng" {
   }
 
   depends_on = [
+    aws_eks_cluster.ecommerce_eks_cluster,
     aws_iam_role_policy_attachment.eks-ng-AmazonEC2ContainerRegistryReadOnly,
     aws_iam_role_policy_attachment.eks-ng-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.eks-ng-AmazonEKSWorkerNodePolicy
