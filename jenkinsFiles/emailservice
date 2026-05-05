@@ -1,0 +1,53 @@
+@Library('Shared')_
+pipeline{
+    agent any
+
+    environment{
+        IMAGE_NAME = "emailservice"
+        IMAGE_TAG = "v1"
+        DOCKER_USER = "kaustavsdet"
+        CLUSTER_NAME = "e-commerce-cluster"
+        KUBE_NAMESPACE = "webapp"
+        SERVER_URL = "https://F3F88D79322599867A16FD57F3C16C71.gr7.us-east-1.eks.amazonaws.com"
+    }
+
+    stages{
+        stage('Cleanup workspace'){
+            steps{
+                cleanWs()
+            }
+        }
+
+        stage('Checkout code'){
+            steps{
+                code_checkout("https://github.com/kaustavGitH/E2E-N-tier-E-Commerce-Application.git", "main")
+            }
+        }
+
+        stage('Docker: build image'){
+            steps{
+                dir("src/${IMAGE_NAME}"){
+                    docker_build(imageName:"${IMAGE_NAME}", imageTag:"${IMAGE_TAG}", dockerHubUser:"${DOCKER_USER}")
+                }
+            }
+        }
+
+        stage('Docker: push image'){
+            steps{
+                dir("src/${IMAGE_NAME}"){
+                    docker_push("${IMAGE_NAME}", "${IMAGE_TAG}")
+                }
+            }
+        }
+
+        stage('Deploy to kubernetes'){
+            steps{
+                dir('k8s-manifests'){
+                    withKubeConfig(caCertificate: '', clusterName: "${CLUSTER_NAME}", contextName: '', credentialsId: 'k8s-cred', namespace: "${KUBE_NAMESPACE}", restrictKubeConfigAccess: false, serverUrl: "${SERVER_URL}"){
+                        sh "kubectl apply -f ${IMAGE_NAME}.yaml -n ${KUBE_NAMESPACE}"
+                    }
+                }
+            }
+        }               
+    }
+}
