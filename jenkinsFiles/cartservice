@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     environment{
-        IMAGE_NAME = "adservice"
+        IMAGE_NAME = "cartservice"
         IMAGE_TAG = "v1"
         DOCKER_USER = "kaustavsdet"
         CLUSTER_NAME = "e-commerce-cluster"
@@ -26,7 +26,7 @@ pipeline{
 
         stage('Docker: build image'){
             steps{
-                dir('src/adservice'){
+                dir('src/${IMAGE_NAME}/src'){
                     docker_build(imageName:"${IMAGE_NAME}", imageTag:"${IMAGE_TAG}", dockerHubUser:"${DOCKER_USER}")
                 }
             }
@@ -34,7 +34,7 @@ pipeline{
 
         stage('Docker: push image'){
             steps{
-                dir('src/adservice'){
+                dir('src/${IMAGE_NAME}/src'){
                     docker_push("${IMAGE_NAME}", "${IMAGE_TAG}")
                 }
             }
