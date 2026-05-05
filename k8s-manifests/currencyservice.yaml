@@ -16,30 +16,30 @@ spec:
       containers:
       - name: currencyservice-container
         image: currencyservice:v1
-      ports:
-      - containerPort: 7000
-      env:
-      - name: PORT
-        value: "7000"
-      - name: DISABLE_PROFILER
-        value: "1"
-      resources:
-        requests:
-          cpu: 100m
-          memory: 64mi
-        limits:
-          cpu: 200m
-          memory: 150Mi
-      readinessProbe:
-        grpc:
-          port: 7000
-        initialDelaySeconds: 15
-        periodSeconds: 10
-      livenessProbe:
-        grpc:
-          port: 7000
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        ports:
+        - containerPort: 7000
+        env:
+        - name: PORT
+          value: "7000"
+        - name: DISABLE_PROFILER
+          value: "1"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64mi
+          limits:
+            cpu: 200m
+            memory: 150Mi
+        readinessProbe:
+          grpc:
+            port: 7000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          grpc:
+            port: 7000
+          initialDelaySeconds: 15
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service

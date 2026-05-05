@@ -16,30 +16,30 @@ spec:
       containers:
       - name: productcatalogservice-container
         image: productcatalogservice:v1
-      ports:
-      - containerPort: 3550
-      env:
-      - name: PORT
-        value: "3550"
-      - name: DISABLE_PROFILER
-        value: "1"
-      resources:
-        requests:
-          cpu: 200m
-          memory: 64mi
-        limits:
-          cpu: 300m
-          memory: 150Mi
-      readinessProbe:
-        grpc:
-          port: 3550
-        initialDelaySeconds: 15
-        periodSeconds: 10
-      livenessProbe:
-        grpc:
-          port: 3550
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        ports:
+        - containerPort: 3550
+        env:
+        - name: PORT
+          value: "3550"
+        - name: DISABLE_PROFILER
+          value: "1"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 64mi
+          limits:
+            cpu: 300m
+            memory: 150Mi
+        readinessProbe:
+          grpc:
+            port: 3550
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          grpc:
+            port: 3550
+          initialDelaySeconds: 15
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service

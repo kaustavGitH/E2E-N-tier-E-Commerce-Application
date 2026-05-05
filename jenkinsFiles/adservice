@@ -43,12 +43,11 @@ pipeline{
         stage('Deploy to kubernetes'){
             steps{
                 dir('k8s-manifests'){
-                withKubeConfig(caCertificate: '', clusterName: '${CLUSTER_NAME}', contextName: '', credentialsId: 'k8s-cred', namespace: '${KUBE_NAMESPACE}', restrictKubeConfigAccess: false, serverUrl: '${SERVER_URL}'){
-                    sh "kubectl apply -f adservice.yaml -n ${KUBE_NAMESPACE}"
+                    withKubeConfig(caCertificate: '', clusterName: '${CLUSTER_NAME}', contextName: '', credentialsId: 'k8s-cred', namespace: '${KUBE_NAMESPACE}', restrictKubeConfigAccess: false, serverUrl: '${SERVER_URL}'){
+                        sh "kubectl apply -f adservice.yaml -n ${KUBE_NAMESPACE}"
                     }
                 }
             }
-        }
-                
+        }               
     }
 }
