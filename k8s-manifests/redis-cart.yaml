@@ -33,9 +33,9 @@ spec:
           requests:
             cpu: 70m
             memory: 200Mi
-        volumes:
-        - name: redis-data
-          emptyDir: {}
+      volumes:
+      - name: redis-data
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
