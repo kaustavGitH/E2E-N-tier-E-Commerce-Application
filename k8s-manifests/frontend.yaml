@@ -47,12 +47,14 @@ spec:
             cpu: 300m
             memory: 150Mi
         readinessProbe:
-          grpc:
+          http:
+            path: /
             port: 8080
           initialDelaySeconds: 15
           periodSeconds: 10
         livenessProbe:
-          grpc:
+          http:
+            path: /
             port: 8080
           initialDelaySeconds: 15
           periodSeconds: 10
