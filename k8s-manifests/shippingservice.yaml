@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: shippingservice-container
-        image: shippingservice:v1
+        image: kaustavsdet/shippingservice:v1
         ports:
         - containerPort: 50051
         env:

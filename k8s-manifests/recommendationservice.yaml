@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: recommendationservice-container
-        image: recommendationservice:v1
+        image: kaustavsdet/recommendationservice:v1
         ports:
         - containerPort: 8080
         env:

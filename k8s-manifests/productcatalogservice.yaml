@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: productcatalogservice-container
-        image: productcatalogservice:v1
+        image: kaustavsdet/productcatalogservice:v1
         ports:
         - containerPort: 3550
         env:

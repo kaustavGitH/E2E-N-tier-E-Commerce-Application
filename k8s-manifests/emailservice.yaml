@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: emailservice-container
-        image: emailservice:v1
+        image: kaustavsdet/emailservice:v1
         ports:
         - containerPort: 8080
         env:

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: paymentservice-container
-        image: paymentservice:v1
+        image: kaustavsdet/paymentservice:v1
         ports:
         - containerPort: 50051
         env:

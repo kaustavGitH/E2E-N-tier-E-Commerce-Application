@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: checkoutservice-container
-        image: checkoutservice:v1
+        image: kaustavsdet/checkoutservice:v1
         ports:
         - containerPort: 5050
         env:
