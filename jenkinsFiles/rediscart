@@ -5,8 +5,8 @@ pipeline{
     environment{
         IMAGE_NAME = "redis-cart"
         CLUSTER_NAME = "e-commerce-cluster"
-        KUBE_NAMESPACE = "webapp"
-        SERVER_URL = "https://F3F88D79322599867A16FD57F3C16C71.gr7.us-east-1.eks.amazonaws.com"
+        KUBE_NAMESPACE = "webapps"
+        SERVER_URL = "https://B95287C9376FA51A0E0466BDBD0B8432.gr7.us-east-1.eks.amazonaws.com"
     }
 
     stages{

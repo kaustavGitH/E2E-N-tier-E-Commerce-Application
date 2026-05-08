@@ -1,6 +1,6 @@
 resource "aws_iam_policy" "s3_policy" {
   name = "s3-access-policy"
-  description = "policy for accessing s3 reemote backend"
+  description = "policy for accessing s3 remote backend"
 
   policy = jsonencode(
     {
@@ -10,7 +10,8 @@ resource "aws_iam_policy" "s3_policy" {
           "Effect" : "Allow",
           "Action" : [
             "s3:*",
-            "eks:*"
+            "eks:*",
+            "ec2:*"
           ],
           "Resource" : [
             "*"
