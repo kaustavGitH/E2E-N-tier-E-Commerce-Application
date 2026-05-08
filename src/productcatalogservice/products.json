@@ -10,7 +10,9 @@
                 "units": 19,
                 "nanos": 990000000
             },
-            "categories": ["accessories"]
+            "categories": [
+                "accessories"
+            ]
         },
         {
             "id": "66VCHSJNUP",
@@ -22,7 +24,10 @@
                 "units": 18,
                 "nanos": 990000000
             },
-            "categories": ["clothing", "tops"]
+            "categories": [
+                "clothing",
+                "tops"
+            ]
         },
         {
             "id": "1YMWWN1N4O",
@@ -34,7 +39,9 @@
                 "units": 109,
                 "nanos": 990000000
             },
-            "categories": ["accessories"]
+            "categories": [
+                "accessories"
+            ]
         },
         {
             "id": "L9ECAV7KIM",
@@ -46,7 +53,9 @@
                 "units": 89,
                 "nanos": 990000000
             },
-            "categories": ["footwear"]
+            "categories": [
+                "footwear"
+            ]
         },
         {
             "id": "2ZYFJ3GM2N",
@@ -58,7 +67,10 @@
                 "units": 24,
                 "nanos": 990000000
             },
-            "categories": ["hair", "beauty"]
+            "categories": [
+                "hair",
+                "beauty"
+            ]
         },
         {
             "id": "0PUK6V6EV0",
@@ -70,7 +82,10 @@
                 "units": 18,
                 "nanos": 990000000
             },
-            "categories": ["decor", "home"]
+            "categories": [
+                "decor",
+                "home"
+            ]
         },
         {
             "id": "LS4PSXUNUM",
@@ -82,7 +97,9 @@
                 "units": 18,
                 "nanos": 490000000
             },
-            "categories": ["kitchen"]
+            "categories": [
+                "kitchen"
+            ]
         },
         {
             "id": "9SIQT8TOJO",
@@ -94,7 +111,9 @@
                 "units": 5,
                 "nanos": 490000000
             },
-            "categories": ["kitchen"]
+            "categories": [
+                "kitchen"
+            ]
         },
         {
             "id": "6E92ZMYYFZ",
@@ -106,7 +125,147 @@
                 "units": 8,
                 "nanos": 990000000
             },
-            "categories": ["kitchen"]
+            "categories": [
+                "kitchen"
+            ]
+        },
+        {
+            "id": "3K8PLT5QWZ",
+            "name": "Backpack",
+            "description": "A durable everyday backpack with multiple compartments and padded straps for comfort.",
+            "picture": "/static/img/products/backpack.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 39,
+                "nanos": 990000000
+            },
+            "categories": [
+                "accessories",
+                "bags"
+            ]
+        },
+        {
+            "id": "8JH2K9VQRT",
+            "name": "Sneakers",
+            "description": "Lightweight and breathable sneakers designed for all-day comfort and casual wear.",
+            "picture": "/static/img/products/sneakers.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 59,
+                "nanos": 990000000
+            },
+            "categories": [
+                "footwear"
+            ]
+        },
+        {
+            "id": "4MNB6X7ZPL",
+            "name": "Desk Lamp",
+            "description": "Modern LED desk lamp with adjustable brightness and flexible neck for optimal lighting.",
+            "picture": "/static/img/products/desk-lamp.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 27,
+                "nanos": 990000000
+            },
+            "categories": [
+                "home",
+                "decor"
+            ]
+        },
+        {
+            "id": "7QWERT9ASD",
+            "name": "Wireless Earbuds",
+            "description": "Compact wireless earbuds with high-quality sound and long-lasting battery life.",
+            "picture": "/static/img/products/wireless-earbuds.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 79,
+                "nanos": 990000000
+            },
+            "categories": [
+                "electronics",
+                "audio"
+            ]
+        },
+        {
+            "id": "5TRND9X2AB",
+            "name": "Smart Ring",
+            "description": "A sleek wearable smart ring that tracks sleep, heart rate, and daily activity with minimal design.",
+            "picture": "/static/img/products/smart-ring.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 89,
+                "nanos": 990000000
+            },
+            "categories": [
+                "electronics",
+                "wearables",
+                "fitness"
+            ]
+        },
+        {
+            "id": "9LEDX7VQMK",
+            "name": "LED Strip Lights",
+            "description": "App-controlled RGB LED strip lights perfect for room decor, gaming setups, and ambient lighting.",
+            "picture": "/static/img/products/led-strip-lights.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 14,
+                "nanos": 990000000
+            },
+            "categories": [
+                "decor",
+                "electronics",
+                "home"
+            ]
+        },
+        {
+            "id": "2PCHN5K8LD",
+            "name": "Pimple Patch Set",
+            "description": "Hydrocolloid acne patches that help reduce inflammation and speed up healing overnight.",
+            "picture": "/static/img/products/pimple-patches.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 9,
+                "nanos": 990000000
+            },
+            "categories": [
+                "beauty",
+                "skincare"
+            ]
+        },
+        {
+            "id": "8GYM4TRK9S",
+            "name": "Adjustable Dumbbells",
+            "description": "Space-saving adjustable dumbbells for home workouts and strength training.",
+            "picture": "/static/img/products/adjustable-dumbbells.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 59,
+                "nanos": 990000000
+            },
+            "categories": [
+                "fitness",
+                "sports",
+                "home-gym"
+            ]
+        },
+        {
+            "id": "7AURB6QWEL",
+            "name": "Mini Portable Blender",
+            "description": "Rechargeable portable blender for smoothies, shakes, and on-the-go nutrition.",
+            "picture": "/static/img/products/portable-blender.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 24,
+                "nanos": 990000000
+            },
+            "categories": [
+                "kitchen",
+                "gadgets",
+                "lifestyle"
+            ]
         }
     ]
 }
