@@ -64,10 +64,10 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app.kubernetes.io/name: frontend
   ports:
   - port: 8080
     targetPort: 8080
-    name: http
+    NodePort: 30007
