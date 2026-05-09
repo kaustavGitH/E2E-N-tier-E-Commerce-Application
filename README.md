@@ -6,7 +6,7 @@ This is composed of 11 microservices written in different languages such as Go, 
 
 | Home Page                                                                                                         | Checkout Screen                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [![Screenshot of store homepage](image.png)](image-1.png) | [![Screenshot of checkout screen](image-2.png)](image-3.png)
+| [![Screenshot of store homepage](/docs/images/image-1.png)](docs/images/image-1.png) | [![Screenshot of checkout screen](/docs/images/image-2.png)](/docs/images/image-2.png)
 
 Challenges faced:
 1. Liveness probe failed: timeout: failed to connect service "172.168.1.53:8080" within 1s: context deadline exceeded -> liveness probe initialDelaySeconds was too less, and it was killing the pod too earlt. This was fixed by increasing the time
