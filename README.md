@@ -7,6 +7,8 @@ This is composed of 11 microservices written in different languages such as Go, 
 
 ## Architecture
 
+[![Architecture Diagram](/docs/images/architecture-diagram.png)](/docs/images/architecture-diagram.png)
+
 ## Step instructions
 1. Clone the GitHub Repository
 2. Configure AWS Keys
