@@ -222,9 +222,9 @@
         },
         {
             "id": "2PCHN5K8LD",
-            "name": "Pimple Patch Set",
-            "description": "Hydrocolloid acne patches that help reduce inflammation and speed up healing overnight.",
-            "picture": "/static/img/products/pimple-patches.jpg",
+            "name": "Tool kit",
+            "description": "A durable and versatile tool kit designed for everyday repairs, maintenance, and DIY projects.",
+            "picture": "/static/img/products/tool-kit.jpg",
             "priceUsd": {
                 "currencyCode": "USD",
                 "units": 9,
