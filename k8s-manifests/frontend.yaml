@@ -16,6 +16,7 @@ spec:
       containers:
       - name: frontend-container
         image: kaustavsdet/frontend:v1
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:

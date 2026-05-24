@@ -16,6 +16,7 @@ spec:
       containers:
       - name: productcatalogservice-container
         image: kaustavsdet/productcatalogservice:v1
+        imagePullPolicy: Always
         ports:
         - containerPort: 3550
         env:
