@@ -29,15 +29,27 @@ variable "vpc_name" {
 }
 
 variable "public_subnet_cidr" {
-  description = "CIDR blocks for vpc subnet"
+  description = "CIDR blocks for public subnet"
   type = list(string)
-  default = [ "172.168.1.0/24","172.168.2.0/24","172.168.3.0/24","172.168.4.0/24" ]
+  default = [ "172.168.1.0/24","172.168.2.0/24" ]
 }
 
-variable "subnet_name" {
-  description = "Name of the subnets"
+variable "private_subnet_cidr" {
+  description = "CIDR blocks for private subnet"
   type = list(string)
-  default = [ "Subnet-A","Subnet-B","Subnet-C","Subnet-D" ]
+  default = [ "172.168.10.0/24", "172.168.11.0/24" ]
+}
+
+variable "public_subnet_name" {
+  description = "Name of the public subnets"
+  type = list(string)
+  default = [ "public-subnet-A","public-subnet-B" ]
+}
+
+variable "private_subnet_name" {
+  description = "Name of the private subnets"
+  type = list(string)
+  default = [ "private-subnet-A","private-subnet-B" ]
 }
 
 variable "route_table_name" {

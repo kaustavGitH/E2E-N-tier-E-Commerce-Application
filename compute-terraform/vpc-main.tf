@@ -14,7 +14,7 @@ data "aws_availability_zones" "available_azs" {
   state = "available"
 }
 
-resource "aws_subnet" "main_subnet" {
+resource "aws_subnet" "public_subnet" {
   count                   = length(var.public_subnet_cidr)
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = var.public_subnet_cidr[count.index]
@@ -22,7 +22,21 @@ resource "aws_subnet" "main_subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = var.subnet_name[count.index]
+    Name        = var.public_subnet_name[count.index]
+    Environment = "prod"
+    Creator     = "terraform"
+  }
+}
+
+resource "aws_subnet" "private_subnet" {
+  count                   = length(var.private_subnet_cidr)
+  vpc_id                  = aws_vpc.main_vpc.id
+  cidr_block              = var.private_subnet_cidr[count.index]
+  availability_zone       = data.aws_availability_zones.available_azs.names[count.index]
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name        = var.private_subnet_name[count.index]
     Environment = "prod"
     Creator     = "terraform"
   }
@@ -53,8 +67,14 @@ resource "aws_route_table" "main_rt" {
   }
 }
 
-resource "aws_route_table_association" "main_rta" {
+resource "aws_route_table_association" "public_rta" {
   count          = length(var.public_subnet_cidr)
-  subnet_id      = aws_subnet.main_subnet[count.index].id
+  subnet_id      = aws_subnet.public_subnet[count.index].id
+  route_table_id = aws_route_table.main_rt.id
+}
+
+resource "aws_route_table_association" "private_rta" {
+  count          = length(var.private_subnet_cidr)
+  subnet_id      = aws_subnet.private_subnet[count.index].id
   route_table_id = aws_route_table.main_rt.id
 }
