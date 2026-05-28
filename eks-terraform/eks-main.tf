@@ -68,10 +68,17 @@ resource "aws_iam_role_policy_attachment" "eks-ng-AmazonEKS_CNI_Policy" {
 # Data source for EKS cluster
 #-----------------------------
 
-data "aws_subnets" "all_subnets" {
+data "aws_subnets" "public_subnets" {
   filter {
     name   = "tag:Name"
-    values = ["Subnet-A", "Subnet-B", "Subnet-C", "Subnet-D"]
+    values = ["public-subnet-A", "public-subnet-B"]
+  }
+}
+
+data "aws_subnets" "private_subnets" {
+  filter {
+    name   = "tag:Name"
+    values = ["private-subnet-A", "private-subnet-B"]
   }
 }
 
@@ -95,7 +102,7 @@ resource "aws_eks_cluster" "ecommerce_eks_cluster" {
     endpoint_public_access  = true
     endpoint_private_access = true
     security_group_ids      = [data.aws_security_group.eks_sg.id]
-    subnet_ids              = data.aws_subnets.all_subnets.ids
+    subnet_ids              = data.aws_subnets.public_subnets.ids
   }
 
   access_config {
@@ -115,7 +122,7 @@ resource "aws_eks_node_group" "ecommerce_eks_ng" {
   cluster_name    = var.eks_cluster_name
   node_group_name = var.node_group_name
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
-  subnet_ids      = data.aws_subnets.all_subnets.ids
+  subnet_ids      = data.aws_subnets.private_subnets.ids
   instance_types = ["t3.large"]
 
   scaling_config {
