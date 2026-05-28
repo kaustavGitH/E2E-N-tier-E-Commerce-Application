@@ -55,7 +55,7 @@ variable "private_subnet_name" {
 variable "route_table_name" {
   description = "Name of the route table"
   type = string
-  default = "Master-route-table"
+  default = "route-table"
 }
 
 variable "igw_name" {

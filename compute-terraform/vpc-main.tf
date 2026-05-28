@@ -29,11 +29,10 @@ resource "aws_subnet" "public_subnet" {
 }
 
 resource "aws_subnet" "private_subnet" {
-  count                   = length(var.private_subnet_cidr)
-  vpc_id                  = aws_vpc.main_vpc.id
-  cidr_block              = var.private_subnet_cidr[count.index]
-  availability_zone       = data.aws_availability_zones.available_azs.names[count.index]
-  map_public_ip_on_launch = false
+  count             = length(var.private_subnet_cidr)
+  vpc_id            = aws_vpc.main_vpc.id
+  cidr_block        = var.private_subnet_cidr[count.index]
+  availability_zone = data.aws_availability_zones.available_azs.names[count.index]
 
   tags = {
     Name        = var.private_subnet_name[count.index]
@@ -52,7 +51,7 @@ resource "aws_internet_gateway" "main_igw" {
   }
 }
 
-resource "aws_route_table" "main_rt" {
+resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
@@ -61,7 +60,22 @@ resource "aws_route_table" "main_rt" {
   }
 
   tags = {
-    Name        = var.route_table_name
+    Name        = "public-${var.route_table_name}"
+    Environment = "prod"
+    Creator     = "terraform"
+  }
+}
+
+resource "aws_route_table" "private_rt" {
+  vpc_id = aws_vpc.main_vpc.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.public_nat.id
+  }
+
+  tags = {
+    Name        = "private-${var.route_table_name}"
     Environment = "prod"
     Creator     = "terraform"
   }
@@ -70,11 +84,20 @@ resource "aws_route_table" "main_rt" {
 resource "aws_route_table_association" "public_rta" {
   count          = length(var.public_subnet_cidr)
   subnet_id      = aws_subnet.public_subnet[count.index].id
-  route_table_id = aws_route_table.main_rt.id
+  route_table_id = aws_route_table.public_rt.id
 }
 
 resource "aws_route_table_association" "private_rta" {
   count          = length(var.private_subnet_cidr)
   subnet_id      = aws_subnet.private_subnet[count.index].id
-  route_table_id = aws_route_table.main_rt.id
+  route_table_id = aws_route_table.private_rt.id
+}
+
+resource "aws_eip" "main_eip" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "public_nat" {
+  subnet_id     = aws_subnet.public_subnet[0].id
+  allocation_id = aws_eip.main_eip.id
 }
