@@ -1,5 +1,5 @@
 output "subnet_ids" {
-  value = data.aws_subnets.all_subnets.ids
+  value = data.aws_subnets.public_subnets.ids
 }
 
 output "security_group_id" {

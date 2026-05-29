@@ -102,7 +102,7 @@ resource "aws_eks_cluster" "ecommerce_eks_cluster" {
     endpoint_public_access  = true
     endpoint_private_access = true
     security_group_ids      = [data.aws_security_group.eks_sg.id]
-    subnet_ids              = data.aws_subnets.public_subnets.ids
+    subnet_ids              = concat(data.aws_subnets.public_subnets.ids, data.aws_subnets.private_subnets.ids)
   }
 
   access_config {
