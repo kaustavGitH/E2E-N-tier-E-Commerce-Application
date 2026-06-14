@@ -14,13 +14,15 @@ This is composed of 11 microservices written in different languages such as Go, 
 2. Configure AWS Keys
 3. Navigate into the Project
 4. Create S3 Buckets for Terraform State
-5. Create Network Infrastructure (EC2, VPC, Subnet, Route table, Internet Gateway, Security Group)
+5. Create Network Infrastructure (EC2, VPC, Subnet, Route table, Internet Gateway, Security Group, CloudWatch)
 6. Connect to EC2 and Access Jenkins
 7. Create EKS cluster using Terraform
 8. Create Jenkins pipeline jobs for all the microservices
 9. Build and Push Docker Images to DockerHub
 10. Deploy all kubernetes manifests
 11. Configure ingress and ingress controller
+12. Access the application through DNS name (A record) provided by the ALB
+13. Navigate to cloudwatch to monitor, extract logs, metrics and traces of the EKS
 
 ## Screenshots / Demo
 | Home Page                                                                                                         | Checkout Screen                                                                                                    |
