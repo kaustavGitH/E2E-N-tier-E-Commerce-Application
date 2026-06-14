@@ -64,6 +64,11 @@ resource "aws_iam_role_policy_attachment" "eks-ng-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
 
+resource "aws_iam_role_policy_attachment" "eks-ng-CloudWatchAgentServerPolicy" {
+  role       = aws_iam_role.eks_node_group_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
 #-----------------------------
 # Data source for EKS cluster
 #-----------------------------
@@ -123,7 +128,7 @@ resource "aws_eks_node_group" "ecommerce_eks_ng" {
   node_group_name = var.node_group_name
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
   subnet_ids      = data.aws_subnets.private_subnets.ids
-  instance_types = ["t3.large"]
+  instance_types  = ["t3.large"]
 
   scaling_config {
     desired_size = 2
@@ -141,4 +146,16 @@ resource "aws_eks_node_group" "ecommerce_eks_ng" {
     aws_iam_role_policy_attachment.eks-ng-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.eks-ng-AmazonEKSWorkerNodePolicy
   ]
+}
+
+#---------------------
+# EKS cloudwatch Addon
+#---------------------
+resource "aws_eks_addon" "cloudwatch" {
+  cluster_name = var.eks_cluster_name
+  addon_name   = "amazon-cloudwatch-observability"
+
+  depends_on = [
+    aws_eks_cluster.ecommerce_eks_cluster,
+    aws_eks_node_group.ecommerce_eks_ng]
 }

@@ -8,7 +8,7 @@ pipeline{
         DOCKER_USER = "kaustavsdet"
         CLUSTER_NAME = "e-commerce-cluster"
         KUBE_NAMESPACE = "webapps"
-        SERVER_URL = "https://11939C123C809B84B7C26A2FD5294027.gr7.us-east-1.eks.amazonaws.com"
+        SERVER_URL = "https://6911721C97B151D2A4E416625C98161D.gr7.us-east-1.eks.amazonaws.com"
     }
 
     stages{
