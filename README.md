@@ -29,6 +29,11 @@ This is composed of 11 microservices written in different languages such as Go, 
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/images/image-1.png)](docs/images/image-1.png) | [![Screenshot of checkout screen](/docs/images/image-2.png)](/docs/images/image-2.png)
 
+## CloudWatch screenshots
+| Container Insight                                                                                                 | Log Management                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [![Screenshot of dashboard](/docs/images/cloudwatch-dashboard.png)](docs/images/cloudwatch-dashboard.png) | [![Screenshot of logs](/docs/images/cloudwatch-log-groups.png)](/docs/images/cloudwatch-log-groups.png)
+
 ## Key learnings
 - Gained hands-on experience in deploying end-to-end multi-tier applications using Kubernetes
 - Developed knowledge of Kubernetes objects such as Deployments, Services, Ingress
